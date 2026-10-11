@@ -335,6 +335,13 @@ not accepted. Source admission passed independently and is not cryptographic
 authentication. Further investigation belongs to FNR-004, with provisioning
 and any cryptographic policy belonging to FNR-007.
 
+The later [FNR-004 distance/power follow-up](RF-CHANNEL-BEHAVIOR.md) resolves the
+practical channel contract: mismatch reception is distance- and requested-power
+sensitive, with residual packets even at low power or greater separation.
+SDK channel selection is not a packet-exclusion guarantee. The exact RF
+mechanism remains unmeasured. This addition does not change the preceding
+historical FNR-002 failures or imply complete receiver acceptance.
+
 At the end of this campaign, A is mapped to root port 3 and B to root port 1.
 Each has a source-built labeled RP recovery bridge and the RF diagnostic in
 flash. These are development fixtures, not an integrated wireless USB receiver.

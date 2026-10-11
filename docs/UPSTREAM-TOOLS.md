@@ -20,6 +20,23 @@ Those are historical qualification identities. If using a newer upstream
 version, inspect its changes, manifests and evidence rather than assigning this
 baseline's physical acceptance to a new artifact.
 
+## RF follow-up revision
+
+The [later channel-behavior campaign](RF-CHANNEL-BEHAVIOR.md) used the unchanged
+original diagnostic for distance tests and a new POWER-capable image built from
+`5f9f5e7c312c746df4ed138ddf7a9514131432c9` for fixed-distance power comparisons.
+Host capture/assessment at `096dd45ad78f4c6ead09d19c45ee7f19377dd53f` includes
+bounded channel/count/separation/power options and final configuration checks.
+Its [exact-head CI](https://github.com/techrote/faikeow-now-reciever/actions/runs/38180889344)
+passed all four jobs. The supplemental Windows image hash, exact deployments
+and actual physical scope are recorded in the follow-up ledger. A Linux CI
+binary is not automatically the same Windows artifact used on the boards.
+
+These are separately identified revisions; the FNR-002 qualified baseline and
+immutable evidence remain unchanged. Read the receiver project's instructions
+and changes before selecting a newer checkout. Do not reset an existing tree
+or apply a new image merely to read this documentation.
+
 ## Obtain a separate checkout
 
 For a new checkout, choose a new local directory; do not replace an existing
