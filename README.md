@@ -23,6 +23,7 @@ their markings, revision and routing must not be assumed identical.
 | [Board contract](docs/BOARD-CONTRACT.md) | Accepted physical observations, recovery procedures and limitations for A and B |
 | [Upstream tools](docs/UPSTREAM-TOOLS.md) | Where firmware and helper scripts live, how to obtain the exact qualified checkout and which directory commands run in |
 | [Evidence and provenance](docs/EVIDENCE-AND-PROVENANCE.md) | Measurement origin, immutable public snapshot, acceptance boundaries and privacy |
+| [RF channel behavior](docs/RF-CHANNEL-BEHAVIOR.md) | Distance/power follow-up, retained negative failures and channel-selection limitations |
 | [Physical test matrix](evidence/FNR-002/test-matrix.md) | PASS / FAIL / BLOCKED / NOT TESTED by case and board |
 | [Agent instructions](AGENTS.md) | Rules for maintaining this reference and using it in programming tasks |
 
@@ -69,10 +70,10 @@ are RP2040 GPIO numbers, not a verified complete header pinout.
   burst/damage/resynchronization and independent MCU restart/recovery cases.
 - **ESP-NOW exchange worked in both directions:** 19/20 campaign cases passed,
   including 6,000-packet sustained runs in each direction. Reverse
-  software-channel-mismatch isolation failed and reproduced; its cause remains
-  unresolved in the historical campaign. See the
-  [anomaly record](evidence/FNR-002/rf-channel-anomaly.json) and
-  [upstream follow-up](https://github.com/techrote/faikeow-now-reciever/issues/5#issuecomment-6109075436).
+  software-channel-mismatch isolation failed and reproduced. The later
+  [distance/power investigation](docs/RF-CHANNEL-BEHAVIOR.md) establishes that
+  SDK channel selection is not a packet-exclusion guarantee; the exact physical
+  mechanism remains unmeasured. All failed negative cases are retained.
 - **USB mouse enumeration/cold re-enumeration passed on both:** active controls,
   complete neutral/fail-safe behavior and suspend/resume were not fully
   physically accepted. The full integrated wireless receiver and reference

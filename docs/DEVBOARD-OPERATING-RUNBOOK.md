@@ -400,13 +400,33 @@ $RfImageSha = '<approved-common-deployed-RF-image-SHA256>'
 if ($LASTEXITCODE -ne 0) { throw 'RF case failed; preserve and inspect this capture' }
 ```
 
-Failure is an expected possible outcome of this unresolved negative case; it
+Failure is an expected possible outcome of this channel-negative case; it
 must not be converted to PASS or followed by unrelated writes. The historical
 focused 1,000-packet experiment used an additional private observer; this
 reusable command runs the repository's selected-case recipes, not that identical
 1,000-packet capture. Omit selection only when a full campaign is needed.
 The helper stops on first failure, retains captures, and sends OFF in cleanup.
 Do not rerun earlier passes solely to hide a retained failure.
+
+The later [distance/power investigation](RF-CHANNEL-BEHAVIOR.md) establishes
+that a channel mismatch is not a reliable exclusion boundary. Its new helper
+options belong to the [follow-up tool revision](UPSTREAM-TOOLS.md#rf-follow-up-revision),
+not the historical FNR-002 checkout. With reviewed POWER-capable diagnostics
+already deployed and exact per-board write/readback records, use the same
+guarded command above with `--case burst --case reject_source --case wrong_channel`,
+`--receive-channel 1 --mismatch-channel 6 --mismatch-count 1000`,
+`--separation-cm <actual-operator-reported-distance>` and
+`--power-limit-qdbm <requested-0-to-82-ceiling>`. Select a fresh output directory
+for each run and retain the selected direction. The tool records configuration
+and verifies final reported channels/ceilings. An older image cannot acknowledge
+POWER; do not bypass that guard or infer calibration from the field.
+
+A useful task-specific comparison keeps geometry/image fixed and includes
+same-channel integrity and source-reject controls around high/low/high power.
+Residual mismatch packets still fail the negative test; the completed campaign
+already demonstrated this. Repeating it is unnecessary unless a new change or
+specific failure warrants the comparison. Cleanup sends OFF and closes handles;
+confirm final state rather than assuming an exception stopped all activity.
 
 ### USB observations
 

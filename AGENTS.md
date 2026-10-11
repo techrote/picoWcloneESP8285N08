@@ -64,6 +64,10 @@ read:
 - Keep the RF channel anomaly and incomplete USB/integrated application gates
   explicit until new evidence resolves them. SDK channel queries do not alone
   establish actual over-the-air behavior.
+- Read `docs/RF-CHANNEL-BEHAVIOR.md` for the subsequent distance/power evidence:
+  SDK channel selection is not a packet-exclusion guarantee, and reduced power
+  or greater separation does not establish isolation. The precise RF mechanism
+  remains unmeasured. Preserve every historical negative failure.
 
 ## Documentation checks and delivery
 

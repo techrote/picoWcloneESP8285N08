@@ -68,6 +68,14 @@ original bytes were preserved/restored, but the original radio application's
 protocol/function and factory provenance remain unknown. Silent AT probes do
 not establish a defect or require repeated restoration experiments.
 
+## Later RF follow-up
+
+The subsequent [RF channel investigation](RF-CHANNEL-BEHAVIOR.md) links a frozen
+receiver-side FNR-004 ledger with all 58 cases, image/tool/driver hashes and
+private capture digests. It adds measured distance/power sensitivity and a
+channel-selection limitation without rewriting this repository's immutable
+FNR-002 snapshot. Receiver-specific implementation and acceptance remain upstream.
+
 ## Private data
 
 Full original RP/radio dumps, raw captures, complete host paths, flash UIDs,

@@ -390,8 +390,11 @@ accounted drops in the two directions.
 **Software-reported channel isolation is not accepted.** A-to-B wrong-channel
 testing received zero packets, but B-to-A received 6/100 valid packets with
 reported A=1/B=6; a focused repetition received 78/1,000 while sampled SDK
-channels remained 1/6 and transmit callbacks reported failure. Cause remains
-unresolved under [FNR-004 / issue #5](https://github.com/techrote/faikeow-now-reciever/issues/5#issuecomment-6109075436).
+channels remained 1/6 and transmit callbacks reported failure. The later
+[distance/power follow-up](RF-CHANNEL-BEHAVIOR.md) reproduced mismatch reception,
+including residual packets at low requested power and at 180 cm. It resolves
+the programming contract: SDK channel selection is not per-packet exclusion.
+The precise RF mechanism remains unmeasured; every negative failure is retained.
 Do not infer the actual over-the-air channel solely from an SDK channel query,
 or equate a transmit callback with application-level delivery acknowledgement.
 
@@ -499,7 +502,7 @@ Keep diagnostics distinct from production and report remaining physical gates.
 
 Remaining questions are bounded: board revision/markings, complete header and
 reset/download routing, measured electrical/current behavior, higher UART rates
-if needed, the RF anomaly, complete USB/profile lifecycle, integrated receiver
+if needed, the precise RF mechanism, complete USB/profile lifecycle, integrated receiver
 and reference sender acceptance. FNR-002's established identity/recovery/UART
 contract remains accepted. None of those open questions adds onboard Bluetooth.
 
